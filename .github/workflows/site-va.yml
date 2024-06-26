@@ -35,5 +35,5 @@ jobs:
         run: |
           echo "${{ secrets.AWS_AMT_VM_KEY }}" > chave.pem
           chmod 400 chave.pem
-          ls
-          echo test, and deploy your project.
+          ssh -o StrictHostKeyChecking=no -i chave.pem ubuntu@ec2-54-224-159-11.compute-1.amazonaws.com -t "cd /var/www/html/va/aws-amt-site-va/; git pull"
+      
